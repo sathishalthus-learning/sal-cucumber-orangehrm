@@ -10,7 +10,8 @@ import io.cucumber.junit.CucumberOptions;
 		features="src/test/resources/features", 
 		glue={"orangeHRM"},
 		plugin = {"pretty"}
-//		,tags = "@login"
+		,tags = "@login"
+//		,publish=true
 				)
 public class Junit4Test {
 

@@ -2,6 +2,8 @@ package orangeHRM.hooks;
 
 import java.time.Duration;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import io.cucumber.java.After;
@@ -10,6 +12,7 @@ import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.BeforeStep;
+import io.cucumber.java.Scenario;
 import orangeHRM.drivers.WebDriverFactory;
 import orangeHRM.helpers.CommonUtils;
 
@@ -46,9 +49,13 @@ public class OrangeHooks {
 	}
 
 	@After
-	public void afterEachScenario() {
+	public void afterEachScenario(Scenario scenario) {
+		//if(scenario.isFailed()) 
+		{
+			byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+			scenario.attach(screenshot, "image/png",scenario.getName());
+		}
 		System.out.println("AfterScenario - quitting driver");
-//		driver.close();
 		driver.quit();
 	}
 

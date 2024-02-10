@@ -1,7 +1,5 @@
 package orangeHRM.steps;
 
-import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 
 import io.cucumber.java.en.*;
@@ -23,24 +21,14 @@ public class LoginSteps {
 	@When("provides valid credentials {string} and {string}")
 	public void provides_valid_credentials_and(String username, String password) {
 		//
-//		driver.findElement(By.name("username")).sendKeys(username);
-//		driver.findElement(By.name("password")).sendKeys(password);
-//		driver.findElement(By.tagName("button")).click();
-		
-//		LoginPage.USERNAME.sendKeys("Admin");
-//		LoginPage.PASSWORD.sendKeys("admin123");
-//		LoginPage.LOGIN.click();
-		
-		LoginPage.getInstance().USERNAME.sendKeys("Admin");
-		LoginPage.PASSWORD.sendKeys("admin123");
-		LoginPage.LOGIN.click();
+		LoginPage.getInstance().loginAsValidUser(username, password);
 	}
 
 	@Then("verify {string} is displayed")
 	public void verify_is_displayed(String heading) {
 		//
 //		String headerText = driver.findElement(By.tagName("h6")).getText();
-		String headerText = DashboardPage.HEADER.getText();
+		String headerText = DashboardPage.getInstance().getHeaderText();
 		System.out.println(headerText);
 	}
 }

@@ -1,9 +1,6 @@
 package orangeHRM.steps;
 
-import java.time.Duration;
-
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import io.cucumber.java.en.*;
@@ -16,28 +13,24 @@ public class DashboardSteps {
 	//
 	WebDriver driver = WebDriverFactory.webDriver;
 
-	@Given("logged into application")
-	public void logged_into_application() {
+	@Given("logged into application {string} and {string}")
+	public void logged_into_application_and(String username, String password) {
 		//
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.get(Constants.APPURL);
-		LoginPage.USERNAME.sendKeys("Admin");
-		LoginPage.PASSWORD.sendKeys("admin123");
-		LoginPage.LOGIN.click();
+		LoginPage.getInstance().loginAsValidUser(username, password);
 	}
 
 	@When("select {string} from menu")
 	public void select_from_menu(String menutab) {
-		// 
-		DashboardPage.DIRECTORY.click();
+		//
+		DashboardPage.getInstance().selectDirectory();
 	}
 
 	@Then("verify {string} of app")
 	public void verify_of_app(String heading) {
-		// 
-		String headerText = DashboardPage.HEADER.getText();
-		Assertions.assertEquals(headerText,heading);
-		driver.quit();
+		//
+		String headerText = DashboardPage.getInstance().getHeaderText();
+		Assertions.assertEquals(headerText, heading);
 	}
 
 }

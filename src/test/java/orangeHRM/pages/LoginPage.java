@@ -3,9 +3,11 @@ package orangeHRM.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import orangeHRM.helpers.CommonUtils;
+
 public class LoginPage {
 	//
-	private static LoginPage LoginPageInstance;
+	public static LoginPage LoginPageInstance;
 
 	//
 	private LoginPage() {
@@ -21,12 +23,19 @@ public class LoginPage {
 
 	//
 	@FindBy(name = "username")
-	public static WebElement USERNAME;
+	private WebElement USERNAME;
 
 	@FindBy(name = "password")
-	public static WebElement PASSWORD;
+	private WebElement PASSWORD;
 
 	@FindBy(tagName = "button")
-	public static WebElement LOGIN;
+	private WebElement LOGIN;
 
+	public void loginAsValidUser(String username, String password) {
+		//
+		USERNAME.sendKeys(username);
+		PASSWORD.sendKeys(password);
+		CommonUtils.highlightElement(LOGIN);
+		LOGIN.click();
+	}
 }

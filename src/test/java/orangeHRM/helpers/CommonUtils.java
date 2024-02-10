@@ -7,6 +7,8 @@ import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import orangeHRM.drivers.WebDriverFactory;
@@ -42,8 +44,12 @@ public class CommonUtils {
 	}
 	
 	public static void initPages() {
-		PageFactory.initElements(WebDriverFactory.webDriver, LoginPage.class);
-		PageFactory.initElements(WebDriverFactory.webDriver, DashboardPage.class);
+		PageFactory.initElements(WebDriverFactory.webDriver, LoginPage.getInstance());
+		PageFactory.initElements(WebDriverFactory.webDriver, DashboardPage.getInstance());
 	}
 
+	public static void highlightElement(WebElement element) {
+		JavascriptExecutor executor = (JavascriptExecutor)WebDriverFactory.webDriver;
+		executor.executeScript("arguments[0].setAttribute('style','border:2px solid blue');", element);
+	}
 }
