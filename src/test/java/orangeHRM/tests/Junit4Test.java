@@ -7,7 +7,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features="src/test/resources/features", 
+		features="src/test/resources/features/Login.feature", 
 		glue={"orangeHRM"},
 		plugin = {"pretty"})
 public class Junit4Test {
