@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.cucumber.java.en.*;
 
-public class DashboardMenuSteps {
+public class DashboardSteps {
 	//
 	WebDriver driver = new ChromeDriver();
 
