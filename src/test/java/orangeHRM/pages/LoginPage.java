@@ -5,14 +5,28 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage {
 	//
-	@FindBy(name="username")
-	public static WebElement USERNAME;
-	
-	@FindBy(name="password")
-	public static WebElement PASSWORD;
-	
-	@FindBy(tagName ="button")
-	public static WebElement LOGIN;
+	private static LoginPage LoginPageInstance;
 
+	//
+	private LoginPage() {
+	}
+
+	//
+	public static LoginPage getInstance() {
+		if (LoginPageInstance == null) {
+			LoginPageInstance = new LoginPage();
+		}
+		return LoginPageInstance;
+	}
+
+	//
+	@FindBy(name = "username")
+	public static WebElement USERNAME;
+
+	@FindBy(name = "password")
+	public static WebElement PASSWORD;
+
+	@FindBy(tagName = "button")
+	public static WebElement LOGIN;
 
 }

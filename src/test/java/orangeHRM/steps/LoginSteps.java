@@ -2,7 +2,6 @@ package orangeHRM.steps;
 
 import java.time.Duration;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import io.cucumber.java.en.*;
@@ -18,7 +17,6 @@ public class LoginSteps {
 	@Given("navigated to login page")
 	public void navigated_to_login_page() {
 		//
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.get(Constants.APPURL);
 	}
 
@@ -28,7 +26,12 @@ public class LoginSteps {
 //		driver.findElement(By.name("username")).sendKeys(username);
 //		driver.findElement(By.name("password")).sendKeys(password);
 //		driver.findElement(By.tagName("button")).click();
-		LoginPage.USERNAME.sendKeys("Admin");
+		
+//		LoginPage.USERNAME.sendKeys("Admin");
+//		LoginPage.PASSWORD.sendKeys("admin123");
+//		LoginPage.LOGIN.click();
+		
+		LoginPage.getInstance().USERNAME.sendKeys("Admin");
 		LoginPage.PASSWORD.sendKeys("admin123");
 		LoginPage.LOGIN.click();
 	}
@@ -39,6 +42,5 @@ public class LoginSteps {
 //		String headerText = driver.findElement(By.tagName("h6")).getText();
 		String headerText = DashboardPage.HEADER.getText();
 		System.out.println(headerText);
-		driver.quit();
 	}
 }
