@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 
 import orangeHRM.drivers.WebDriverFactory;
+import orangeHRM.pages.DashboardPage;
 import orangeHRM.pages.LoginPage;
 
 public class CommonUtils {
@@ -42,6 +43,7 @@ public class CommonUtils {
 	
 	public static void initPages() {
 		PageFactory.initElements(WebDriverFactory.webDriver, LoginPage.class);
+		PageFactory.initElements(WebDriverFactory.webDriver, DashboardPage.class);
 	}
 
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import io.cucumber.java.en.*;
 import orangeHRM.drivers.WebDriverFactory;
 import orangeHRM.helpers.Constants;
+import orangeHRM.pages.DashboardPage;
 import orangeHRM.pages.LoginPage;
 
 public class LoginSteps {
@@ -35,7 +36,8 @@ public class LoginSteps {
 	@Then("verify {string} is displayed")
 	public void verify_is_displayed(String heading) {
 		//
-		String headerText = driver.findElement(By.tagName("h6")).getText();
+//		String headerText = driver.findElement(By.tagName("h6")).getText();
+		String headerText = DashboardPage.HEADER.getText();
 		System.out.println(headerText);
 		driver.quit();
 	}
