@@ -10,4 +10,4 @@ Feature: Menu
     Examples: 
       | tabname   | headername |
       | Directory | Directory  |
-      #| PIM       | PIM        |
+      | PIM       | PIM        |

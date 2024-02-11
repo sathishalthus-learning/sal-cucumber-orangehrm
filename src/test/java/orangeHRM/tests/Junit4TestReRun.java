@@ -7,13 +7,12 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features="src/test/resources/features", 
-		glue={"orangeHRM"},
-		plugin = {"pretty","rerun:target/failed_scenarios.txt","html:target/cucumber.html"}
+		features="@target/failed_scenarios.txt" 
+		,glue={"orangeHRM"}
 //		,tags = "@login"
 //		,publish=true
-//		,monochrome=true
+		,monochrome=true
 				)
-public class Junit4Test {
+public class Junit4TestReRun {
 
-}
+} 

@@ -9,11 +9,11 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features="src/test/resources/features", 
 		glue={"orangeHRM"},
-		plugin = {"pretty","rerun:target/failed_scenarios.txt","html:target/cucumber.html"}
+		plugin = {"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 //		,tags = "@login"
 //		,publish=true
 //		,monochrome=true
 				)
-public class Junit4Test {
+public class Junit4TestAllureReport {
 
 }
